@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Elegant Ceramic Bowl Set",
+    "description": "Exquisite white ceramic bowls, perfect for every dining occasion. Set of 4.",
+    "price": "32.99",
+    "imageURL": "../assets/Elegan-Ceramic-Bowl-Set.jpeg",
+    "quantity": 3
+  },
+  {
+    "name": "Emerald Ceramic Bowl Collection",
+    "description": "Luxurious table set of green ceramic bowls exuding a rustic charm. Set of 6.",
+    "price": "72.99",
+    "imageURL": "",
+    "quantity": 11
+  },
+  {
+    "name": "Petite Emerald Water Vessel",
+    "description": "A charming small green ceramic vessel, ideal for serving water or as a decorative piece.",
+    "price": "12.99",
+    "imageURL": "",
+    "quantity": 1
+  },
+  {
+    "name": "Classic Ceramic Mug Duo",
+    "description": "Timeless white ceramic mugs, a staple for every household. Set of 2.",
+    "price": "12.99",
+    "imageURL": "",
+    "quantity": 2
+  },
+  {
+    "name": "Emerald Ceramic Plate Collection",
+    "description": "A set of 4 vibrant green ceramic plates, adding a touch of elegance to your dining.",
+    "price": "32.99",
+    "imageURL": "",
+    "quantity": 5
+  },
+  {
+    "name": "Premium Ceramic Plate Quartet",
+    "description": "Beautifully crafted ceramic plates with a touch of modern design. Set of 4.",
+    "price": "22.99",
+    "imageURL": "",
+    "quantity": 4
+  },
+  {
+    "name": "Emerald Ceramic Container Duo",
+    "description": "Chic green ceramic containers, perfect for storing your essentials stylishly. Set of 2.",
+    "price": "44.99",
+    "imageURL": "",
+    "quantity": 2
+  },
+  {
+    "name": "Elegant Ceramic Container Set",
+    "description": "Sophisticated ceramic containers that blend function with style. Set of 3.",
+    "price": "39.99",
+    "imageURL": "",
+    "quantity": 2
+  },
+  {
+    "name": "Lush Green Ceramic Plate",
+    "description": "A singular green ceramic plate, an elegant addition to your collection.",
+    "price": "29.99",
+    "imageURL": "",
+    "quantity": 4
+  },
+  {
+    "name": "Pristine Ceramic Vessel Duo",
+    "description": "Exquisitely designed white ceramic vessels, perfect for both functional and decorative purposes. Set of 2.",
+    "price": "22.99",
+    "imageURL": "",
+    "quantity": 2
+  }
+]

@@ -1,4 +1,4 @@
-const Product = ({ product, imageURL }) => {
+const Product = ({ product, imageURL, add }) => {
   const { name, description, price } = product
 
   return (
@@ -6,13 +6,17 @@ const Product = ({ product, imageURL }) => {
       <div className="image-container">
         <img src={imageURL} alt={description} className="img" />
       </div>
-      <p className="name">{name}</p>
-      <p className="description">{description}</p>
-      <p className="price">{price}</p>
+      <div className="product-info-container">
+        <div className="details">
+          <p className="name">{name}</p>
+          <p className="price">${price}</p>
+        </div>
+        <p className="description">{description}</p>
 
-      <button type="button" className="add-to-cart-btn">
-        Add To Cart
-      </button>
+        <button type="button" className="add-to-cart-btn" onClick={() => add(product)}>
+          Add To Cart
+        </button>
+      </div>
     </div>
   )
 }

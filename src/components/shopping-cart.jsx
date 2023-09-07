@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { images } from '../utils/images.js'
 
-const ShoppingCart = ({ cart, count, add, remove }) => {
+const ShoppingCart = ({ cart,  add, remove }) => {
   const [subtotal, setSubtotal] = useState(0)
 
   useEffect(() => {
-    const total = cart.reduce((sum, product) => sum + parseFloat(product.price), 0)
+    const total = cart.reduce((sum, product) => product.count > 1 ? (sum + parseFloat(product.price) * product.count) : sum + parseFloat(product.price), 0)
     setSubtotal(total)
   }, [cart])
 
@@ -21,12 +21,14 @@ const ShoppingCart = ({ cart, count, add, remove }) => {
             <div className="cart-item">
               <div className="img-container">
                 <img src={images[img]} alt={item.description} />
-                <div className="details">
+              </div>
+              <div className="item-description">
+              <div className="details">
                   <p>{item.name}</p>
                   <p className="quantity">Quantity: { item.count }</p>
                 </div>
+                <p>${item.price}</p>
               </div>
-              <p>${item.price}</p>
               <div className="add-to-cart-btn">
                 <i className="fa-solid fa-minus" onClick={() => remove(item)} />
                 <i className="fa-solid fa-plus" onClick={() => add(item)} />

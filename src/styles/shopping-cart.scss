@@ -35,15 +35,24 @@ hr {
 }
 
 .cart-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
   position: relative;
   margin: 2rem 0;
 
   .img-container {
-    display: flex;
     gap: 1rem;
-    align-self: center;
+  }
+
+  .item-description {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-self: flex-start;
+    padding: 2rem;
 
     .quantity {
       font-weight: bold;
@@ -51,6 +60,7 @@ hr {
   }
 
   .add-to-cart-btn {
+    position: absolute;
     display: flex;
     justify-content: space-between;
     padding: 0;

@@ -9,13 +9,13 @@ const LandingPage = () => {
     <>
       <div className="h-[100vh] relative w-full ">
         <span className="absolute bottom-0 left-0 right-0 top-0 w-full h-full z-10 justify-end bg-black/20"></span>
-          <div className="absolute left-0 right-0 h-[100vh]">
+        <div className="absolute left-0 right-0 h-[100vh]">
           <img
             className="w-full h-full object-cover"
             src={hero} alt="Ceramic pots" />
         </div>
 
-        <div className="relative z-20 m-auto my-0 py-40 px-40 justify-center flex flex-col items-end gap-[1rem] border-red-100 max-w-[1200px]">
+        <div className="relative z-20 m-auto mx-[5vw] my-0 py-40 justify-center flex flex-col items-end gap-[1rem] border-red-100 max-w-[1200px]">
           <h1 className="font-bold">Discover <br /> Handcrafted <br /> Magic</h1>
           <h3>Timeless designs for your modern home.</h3>
           <button type="button" className="rounded-lg bg-[#d8d7d5] font-bold text-[#00000088] w-100 mt-1 p-5 px-10 hover:cursor-pointer">Explore the Collection</button>

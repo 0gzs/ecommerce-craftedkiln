@@ -1,36 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-const useCart = () => {
-  const [cart, setCart] = useState([])
-  const [count, setCount] = useState(0)
+export const useCart = () => {
+  const [cart, setCart] = useState(() => {
+    const storedCart = window.localStorage.getItem('cart')
+    if (storedCart) return JSON.parse(storedCart)
+    return []
+  })
 
-  const addToCart = item => {
-    let updatedCart
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
+
+  const add = item => {
+    let updatedCart = []
     const foundIndex = cart.findIndex(p => p.name === item.name)
 
     if (foundIndex !== -1) {
       updatedCart = cart.map((p, i) => i === foundIndex ? { ...p, count: p.count + 1 } : p)
     } else updatedCart = [...cart, { ...item, count: 1 }]
 
-    setCart(updatedCart)
+    window.localStorage.setItem('cart', JSON.stringify(updatedCart))
+    return setCart([...updatedCart])
   }
 
-  const removeFromCart = item => {
-    let updatedCart
+  const remove = item => {
+    let updatedCart = []
     const foundIndex = cart.findIndex(p => p.name === item.name)
 
     if (cart[foundIndex].count === 1) updatedCart = cart.filter(p => p.name !== item.name)
-    else if (foundIndex !== -1) updatedCart = cart.map((p, i) => i === foundIndex ? { ...p, count: p.count - 1 } : p )
+    else if (foundIndex !== -1) updatedCart = cart.map((p, i) => i === foundIndex ? { ...p, count: p.count - 1 } : p)
 
-    setCart(updatedCart)
+    window.localStorage.setItem('cart', JSON.stringify(updatedCart))
+    return setCart([...updatedCart])
   }
 
-  useEffect(() => {
-    const totalCount = cart.reduce((sum, product) => sum + product.count, 0)
-    setCount(totalCount)
-  }, [cart])
-
-  return { cart, count, addToCart, removeFromCart }
+  return { cart, add, remove }
 }
-
-export default useCart

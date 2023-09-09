@@ -1,33 +1,36 @@
-import useCart from './hooks/useCart.js'
-import './index.css'
+import { Routes, Route, Outlet } from 'react-router-dom'
+
+import LandingPage from './pages/landing-page'
+import ShoppingCart from './pages/shopping-cart'
+import ProductList from './pages/product-list'
 
 import Nav from './components/nav'
-import ProductList from './components/product-list'
-import ShoppingCart from './components/shopping-cart'
-import LandingPage from './components/landing-page'
+
+import { useCart } from './hooks/useCart'
 
 function App() {
-  const { 
-    cart,
-    count,
-    viewCart,
-    setViewCart,
-    addToCart,
-    removeFromCart
-  } = useCart
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="/shop" element={<ProductList />} />
+          <Route path={`/cart`} element={<ShoppingCart />} />
+        </Route>
+      </Routes>
+    </>
+  );
+}
+
+function Layout() {
+  const { cart, add, remove } = useCart()
 
   return (
-    <div>
-      <Nav count={count} setViewCart={setViewCart} viewCart={viewCart} />
-      {false ?
-        <LandingPage /> :
-        <>
-      {!viewCart ?
-        <ProductList add={addToCart} /> :
-        <ShoppingCart cart={cart} count={count} add={addToCart} remove={removeFromCart} />}
-        </>}
-    </div>
-  );
+    <>
+      <Nav cart={cart} />
+      <Outlet context={{ cart, add, remove }} />
+    </>
+  )
 }
 
 export default App;

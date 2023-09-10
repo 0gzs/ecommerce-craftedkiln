@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const useCart = () => {
+  const [count, setCount] = useState(0)
   const [cart, setCart] = useState(() => {
     const storedCart = window.localStorage.getItem('cart')
     if (storedCart) return JSON.parse(storedCart)
@@ -8,7 +9,9 @@ export const useCart = () => {
   })
 
   useEffect(() => {
-    console.log(cart)
+    if (cart) setCount(() => (
+      cart.reduce((sum, item) => sum + item.count, 0)
+    ))
   }, [cart])
 
   const add = item => {
@@ -34,5 +37,5 @@ export const useCart = () => {
     return setCart([...updatedCart])
   }
 
-  return { cart, add, remove }
+  return { cart, count, add, remove }
 }

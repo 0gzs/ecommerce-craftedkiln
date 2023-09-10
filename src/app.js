@@ -23,11 +23,14 @@ function App() {
 }
 
 function Layout() {
-  const { cart, add, remove } = useCart()
+  const { cart, count, add, remove } = useCart()
 
   return (
     <>
-      <Nav cart={cart} />
+      <span id="shipping-banner" className="text-white border border-black w-full h-[5vh] min-h-[3.5rem] accent-gradient flex items-center justify-center font-bold ">
+        FREE SHIPPING ON ORDER 85+
+      </span>
+      <Nav count={count} />
       <Outlet context={{ cart, add, remove }} />
     </>
   )

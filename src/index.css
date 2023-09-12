@@ -62,3 +62,24 @@ h3 {
   height: calc(100% * 4 / 5);
 }
 
+
+.accent-gradient {
+  background: linear-gradient(to bottom, #3C6560 -70%, #213C40 50%);
+}
+
+.accent-gradient-sm {
+  background: linear-gradient(to bottom, #3C6560 -20%, #213C40 150%);
+}
+
+.accend-gradient-sm:hover {
+    background: #213C40;
+  }
+
+
+.navbar {
+  transition: all .2s ease;
+}
+
+.nav-sm {
+  padding: 0 5vw;
+}

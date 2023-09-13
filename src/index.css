@@ -77,9 +77,37 @@ h3 {
 
 
 .navbar {
-  transition: all .2s ease;
+  transition: all .5s ease;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.navbar a h2 {
+  font-size: 2.5vw;
+  transition: all .6s;
 }
 
 .nav-sm {
-  padding: 0 5vw;
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  position: sticky;
+  top: 0;
+}
+
+@media screen and (min-width: 680px) {
+  .nav-sm h2 {
+    font-size: 1.5vw;
+  }
+}
+
+.sticky-products {
+  position: sticky;
+  top: 51px;
+  height: calc(100vh - 51px);
+  overflow-y: hidden;
+}
+
+.sticky-products .grid-container {
+  overflow-y: scroll;
 }

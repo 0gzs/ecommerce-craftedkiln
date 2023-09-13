@@ -1,16 +1,17 @@
-import { useMemo } from "react"
+import React, { useMemo } from "react"
 import {
   NavLink,
 } from "react-router-dom"
 import useScrollEffect from "../hooks/useScrollEffect"
 
-const Nav = ({ count }) => {
-  const { scrolled } = useScrollEffect(40)
 
-  let navSmall = 'py-[2rem]'
+const Nav = ({ count }) => {
+  const { scrolled } = useScrollEffect('nav', 40, 40)
+
+  let navSmall = ''
 
   if (scrolled) {
-    navSmall = 'py-[.5rem]'
+    navSmall = 'nav-sm'
   }
 
   const cartLink = useMemo(() => (
@@ -22,16 +23,16 @@ const Nav = ({ count }) => {
   ), [count])
 
   const homeLink = useMemo(() => (
-    <NavLink to="/"><h2 className={`font-bold ${navSmall === 'py-[2rem]' ? 'md:text-[5rem]' : 'text-[2rem]'}`}>Crafted Kiln</h2></NavLink>
-  ), [navSmall])
+    <NavLink to="/"><h2 className='font-bold'>Crafted Kiln</h2></NavLink>
+  ), [])
 
   const shopLink = useMemo(() => (
-    <NavLink to="/shop" className="hover:cursor-pointer">Shop</NavLink>
+    <NavLink to="shop/" className="hover:cursor-pointer">Shop</NavLink>
   ), [])
 
   return (
-    <div id="nav" className={`bg-[#FAF8ED] flex items-center px-[5vw] justify-between sticky top-0 z-30
-      ${navSmall} navbar`}>
+    <div id="nav" className={`bg-[#FAF8ED] flex items-center px-[5vw] justify-between z-30 navbar
+      ${navSmall}`}>
       {homeLink}
       <div className="flex items-center w-fit space-x-[1rem]">
         <ul className="flex space-x-[2rem]">

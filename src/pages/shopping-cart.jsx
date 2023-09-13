@@ -22,7 +22,7 @@ const ShoppingCart = () => {
         {cart.map((item, i) => {
           const img = `${item['name']}.jpeg`
           return (
-          <div key={Math.floor(Math.random() * i)}>
+          <div key={i}>
             <div className="relative flex justify-between items-center w-full my-[2rem]">
               <div className="gap-[1rem] max-w-[20%] lg:max-w-[15%] w-full overflow-hidden border">
                 <img className="w-full object-cover object-center hover:cursor-pointer" src={images[img]} alt={item.description} />

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 
 import LandingPage from './pages/landing-page'
@@ -22,15 +23,27 @@ function App() {
   );
 }
 
+const ShoppingBanner = ({ setDone }) => {
+
+  useEffect(() => {
+    setDone(true)
+  }, [setDone])
+
+  return (
+    <div id="shipping-banner" className="text-white border border-black w-full py-[1.3rem] text-[1.4rem] accent-gradient flex items-center justify-center font-bold ">
+      FREE SHIPPING ON ORDER 85+
+    </div>
+  )
+}
+
 function Layout() {
+  const [done, setDone] = useState(false)
   const { cart, count, add, remove } = useCart()
 
   return (
     <>
-      <span id="shipping-banner" className="text-white border border-black w-full h-[5vh] min-h-[3.5rem] accent-gradient flex items-center justify-center font-bold ">
-        FREE SHIPPING ON ORDER 85+
-      </span>
-      <Nav count={count} />
+      <ShoppingBanner setDone={setDone} />
+      { done && <Nav count={count} /> }
       <Outlet context={{ cart, add, remove }} />
     </>
   )

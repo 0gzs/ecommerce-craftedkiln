@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react'
 
-const useScrollEffect = (offsetAmount) => {
-  const [scrolled, setScrolled] = useState(false)
-  const [offset, setOffset] = useState(0)
-
+const useScrollEffect = (id, offset, offsetOff) => {
+ const [scrolled, setScrolled] = useState(false)  
+  
   useEffect(() => {
     let rafId = null
 
     const onScroll = () => {
       if (rafId) cancelAnimationFrame(rafId)
+      const container = document.getElementById(id)
 
-      rafId = requestAnimationFrame(() => {
-        setOffset(window.pageYOffset)
-      })
+        rafId = requestAnimationFrame(() => {
+          const currentOffset = window.pageYOffset
+          
+          if (Math.floor(currentOffset) >= container.offsetTop - offset && !scrolled) setScrolled(true)
+          else if (Math.floor(currentOffset) < container.offsetTop - offsetOff && scrolled) setScrolled(false)
+        })
     }
-
-    if (offset >= offsetAmount) setScrolled(true)
-    else setScrolled(false)
 
     window.addEventListener('scroll', onScroll)
 
     return () => {
       cancelAnimationFrame(rafId)
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scroll', onScroll);
     }
-  }, [offset, offsetAmount])
+  }, [scrolled, id, offset, offsetOff]) 
 
   return { scrolled }
 }

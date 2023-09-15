@@ -6,13 +6,10 @@ import useScrollEffect from "../hooks/useScrollEffect"
 
 
 const Nav = ({ count }) => {
-  const { scrolled } = useScrollEffect('nav', 40, 40)
+  const { scrolled } = useScrollEffect(40, 50)
 
   let navSmall = ''
-
-  if (scrolled) {
-    navSmall = 'nav-sm'
-  }
+  if (scrolled) navSmall = 'nav-sm'
 
   const cartLink = useMemo(() => (
     <NavLink to="cart/">

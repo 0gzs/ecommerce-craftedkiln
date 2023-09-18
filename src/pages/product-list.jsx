@@ -1,8 +1,12 @@
 import Product from '../components/product'
-import products from '../data.json'
+
+import ProductModel from '../models/product'
+import data from '../data.json'
 import { images } from '../utils/images.js'
 import hero from '../assets/Emerald Ceramic Bowl Collection.jpeg'
 import useScrollEffect from '../hooks/useScrollEffect'
+
+const products = data.map(product => new ProductModel(product))
 
 const ProductList = () => {
   const { scrolled } = useScrollEffect('container', 51, 59)
@@ -11,6 +15,7 @@ const ProductList = () => {
   if (scrolled) {
     classes = 'sticky-products'
   }
+
 
   return (
     <div id="product-page" className='flex flex-col h-full overflow-scroll'>

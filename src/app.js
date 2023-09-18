@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 
+import { CartProvider } from './context/cart-context'
 import LandingPage from './pages/landing-page'
 import ShoppingCart from './pages/shopping-cart'
 import ProductList from './pages/product-list'
 
 import Nav from './components/nav'
-
-import { useCart } from './hooks/useCart'
 
 function App() {
   return (
@@ -38,14 +37,12 @@ const ShoppingBanner = ({ setDone }) => {
 
 function Layout() {
   const [done, setDone] = useState(false)
-  const { cart, count, add, remove } = useCart()
-
   return (
-    <>
+    <CartProvider>
       <ShoppingBanner setDone={setDone} />
-      { done && <Nav count={count} /> }
-      <Outlet context={{ cart, add, remove }} />
-    </>
+      { done && <Nav /> }
+      <Outlet />
+    </CartProvider>
   )
 }
 

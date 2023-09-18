@@ -1,12 +1,13 @@
 import { useCart } from '../context/cart-context'
 
-const Product = ({ product, imageURL }) => {
+const Product = ({ product, view, imageURL, desc=false }) => {
   const { addProductToCart } = useCart()
 
   return (
     <div 
       className="relative">
-      <div className="image-container w-full overflow-hidden">
+      {desc && <i className="fa-solid fa-arrow-left  border-2 border-white text-[4rem] rounded-lg  block px-12 py-4 relative float-right mb-5 hover:cursor-pointer hover:border-black" onClick={() => view(false)}></i>}
+      <div className="image-container w-full overflow-hidden" onClick={() => view(product)}>
         <img src={imageURL} alt={product.description} 
           className="w-full object-cover object-center 
             hover:scale-[1.05] hover:cursor-pointer" />
@@ -16,7 +17,7 @@ const Product = ({ product, imageURL }) => {
           <p className="py-[1.2rem]">{product.name}</p>
           <p className="py-[1.2rem] font-bold">${product.price}</p>
         </div>
-        <p className="py-[1.2rem]">{product.description}</p>
+        {desc && <p className="py-[1.2rem]">{product.description}</p>}
 
         <button 
           className=" px-[4rem] py-[1.5rem]

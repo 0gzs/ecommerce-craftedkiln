@@ -1,21 +1,26 @@
 import Product from '../components/product'
 
+import { useState } from 'react'
 import ProductModel from '../models/product'
 import data from '../data.json'
-import { images } from '../utils/images.js'
 import hero from '../assets/Emerald Ceramic Bowl Collection.jpeg'
 import useScrollEffect from '../hooks/useScrollEffect'
 
 const products = data.map(product => new ProductModel(product))
 
 const ProductList = () => {
-  const { scrolled } = useScrollEffect('container', 51, 59)
+  const { scrolled } = useScrollEffect(775, 775)
+  const [selected, setSelected] = useState()
 
   let classes = ''
   if (scrolled) {
     classes = 'sticky-products'
   }
 
+  const viewSelected = () => {
+    const image = selected.getImage()
+    return <Product product={selected} view={setSelected} imageURL={image} desc={true} />
+  }
 
   return (
     <div id="product-page" className='flex flex-col h-full overflow-scroll'>
@@ -31,13 +36,13 @@ const ProductList = () => {
         <h2 className='text-center py-[5vw] text-[5rem]'>All handmade pieces</h2>
           <div id="container" className={`${classes} flex flex-col md:flex-row w-full space-y-10 md:space-y-0 p-[5vw] py-[2.5vw] md:space-x-20`}>
 
-          <section className='w-full p-10 md:w-[75%] md:min-w-[32rem] md:max-w-[35rem] border-[5px] border-black'>
+          <section className='w-full h-fit p-10 md:w-[75%] md:min-w-[32rem] md:max-w-[45rem] border-[5px] border-black'>
+            { selected ? viewSelected() : 'Nothing'}
           </section>
           <div
             className="grid-container w-full">
             {products.map((product, i) => {
-              const img = `${product['name']}.jpeg`
-              return <Product product={product} imageURL={images[img]} key={i} />
+              return <Product product={product} view={setSelected} imageURL={product.getImage()} key={i} />
           })}
         </div>
       </div>
